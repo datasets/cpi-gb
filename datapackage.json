@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "path": "data/inflation-uk.csv",
+      "title": "Annual percentage change of long term indicator of prices of consumer g&s",
+      "ons_id": "CDSI",
+      "index_period": "1974Jan",
+      "fields": [
+        {"id": "Year"} , {"id": "CDSI", "label": "Inflation"}}
+      ]
+    }
+  ]
+}
