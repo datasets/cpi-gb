@@ -23,8 +23,8 @@ function process() {
     .from.path('cache/cpi-uk.csv')
     .on('record', function(data, idx) {
       if (idx == 0) {
-        outcsv.write(data);
-        outcsv2.write(data);
+        outcsv.write(['Year','Price Index']);
+        outcsv2.write(['Date','Price Index']);
         return;
       } else if (!data[0] || skip) {
         skip = true;

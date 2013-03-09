@@ -1,13 +1,40 @@
 {
+  "name": "cpi-uk",
+  "title": "UK Consumer Price Index",
+  "sources": [{
+    "name": "Office of National Statistics",
+    "web": "http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=mm23&cdid=CDKO"
+  }],
   "files": [
+    {
+      "path": "data/cpi-uk-annual.csv",
+      "schema": {
+        "fields": [
+          {
+            "id": "Year"
+          },
+          {
+            "id": "Price Index"
+          }
+        ]
+      }
+    },
     {
       "path": "data/inflation-uk.csv",
       "title": "Annual percentage change of long term indicator of prices of consumer g&s",
       "ons_id": "CDSI",
       "index_period": "1974Jan",
-      "fields": [
-        {"id": "Year"} , {"id": "CDSI", "label": "Inflation"}}
-      ]
+      "schema": {
+          "fields": [
+            {
+              "id": "Year"
+            },
+            { 
+              "id": "CDSI",
+              "label": "Inflation"
+            }
+          ]
+        }
     }
   ]
 }
