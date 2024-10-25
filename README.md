@@ -1,4 +1,4 @@
-<a href="https://datahub.io/core/cpi-gb"><img src="https://badgen.net/badge/icon/View%20on%20datahub.io/orange?icon=https://datahub.io/datahub-cube-badge-icon.svg&label&scale=1.25)" alt="badge" /></a>
+<a className="gh-badge" href="https://datahub.io/core/cpi-gb"><img src="https://badgen.net/badge/icon/View%20on%20datahub.io/orange?icon=https://datahub.io/datahub-cube-badge-icon.svg&label&scale=1.25" alt="badge" /></a>
 
 Consumer Price Index (and hence inflation) for the UK from 1850 to the present (monthly since June 1947).
 
