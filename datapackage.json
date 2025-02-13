@@ -3,7 +3,7 @@
   "title": "UK Consumer Price Index",
   "sources": [{
     "name": "Office of National Statistics",
-    "web": "http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=mm23&cdid=CDKO"
+    "web": "https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23"
   }],
   "files": [
     {
