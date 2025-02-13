@@ -1,3 +1,4 @@
+import os
 import csv
 import requests
 
@@ -6,10 +7,17 @@ lookup = {
     'JUL': '07', 'AUG': '08', 'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12'
 }
 url = 'https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23'
+url_inflation = 'https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdsi/mm23'
+
 def download_cache(): 
-    response = requests.get(url)
+    if not os.path.exists('cache'):
+        os.makedirs('cache')
+    response1 = requests.get(url)
+    response2 = requests.get(url_inflation)
     with open('cache/cpi-uk.csv', mode='w') as file:
-        file.write(response.text)
+        file.write(response1.text)
+    with open('cache/inflation-uk.csv', mode='w') as file:
+        file.write(response2.text)
 
 def process():
     skip = False
@@ -42,15 +50,26 @@ def process():
                         annual_writer.writerow(data)
                         annual_data.append([int(data[0]), float(data[1])])
 
-    # Compute inflation (CDSI) and save to inflation.csv
     with open('data/inflation-uk.csv', mode='w', newline='') as inflation_file:
-        inflation_writer = csv.writer(inflation_file)
-        inflation_writer.writerow(['Year', 'CDSI'])
-        
-        for i in range(1, len(annual_data)):
-            year, price_index = annual_data[i]
-            prev_price_index = annual_data[i - 1][1]
-            cds = ((price_index - prev_price_index) / prev_price_index) * 100
-            inflation_writer.writerow([year, round(cds, 1)])
+        with open('cache/inflation-uk.csv', mode='r') as input_file:
+            reader = csv.reader(input_file)
+            inflation_writer = csv.writer(inflation_file)
+            inflation_writer.writerow(['Year', 'Inflation'])
+            for idx, data in enumerate(reader):
+                if idx < 8:
+                    continue
+                elif not data or not data[0]:
+                    continue
+                parts = data[0].split(' ')
+                if len(parts) > 1:
+                    data[0] = f"{parts[0]}-{lookup.get(parts[1], '01')}-01"
+                    inflation_writer.writerow(data)
+                else:
+                    data[0] = parts[0]
+                    inflation_writer.writerow(data)
+                    annual_data.append([int(data[0]), float(data[1])])
 
-process()
+if __name__== '__main__':
+    download_cache()
+    process()
+
