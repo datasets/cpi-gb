@@ -6,8 +6,8 @@ Consumer Price Index (and hence inflation) for the UK from 1850 to the present (
 
 Key source files are:
 
-* [Price Index 1800 to Present](http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=mm23&cdid=CDKO)
-* [Inflation 1800 to Present](http://www.ons.gov.uk/ons/datasets-and-tables/downloads/csv.csv?dataset=mm23&cdid=CDSI)
+* [Price Index 1800 to Present](https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23)
+* [Inflation 1800 to Present](https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23)
 
 We take these and just to a split out of annual from monthly and some tidying of the date format (see scripts/process.js).
 
