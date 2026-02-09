@@ -23,11 +23,11 @@ Then run the processing script to split out monthly and annual (they put them in
 
 ## Rant
 
-Why is it always so complicated to get data. A quick search on the interwebs yields: <http://www.ons.gov.uk/ons/rel/cpi/consumer-price-indices/october-2012/cpi-time-series-data.html>
+Why is it always so complicated to get data. A quick search on the interwebs yields: http://www.ons.gov.uk/ons/rel/cpi/consumer-price-indices/october-2012/cpi-time-series-data.html
 
 But this turns out to be so big that it does not open in a spreadsheet programme (if you take CSV). In addition all the series descriptions are mixed in at the bottom of the file so this is not machine processable!
 
-Let's try instead to go for the series selector to try and break it down: <http://www.ons.gov.uk/ons/datasets-and-tables/data-selector.html?dataset=mm23>
+Let's try instead to go for the series selector to try and break it down: http://www.ons.gov.uk/ons/datasets-and-tables/data-selector.html?dataset=mm23
 
 But this is about 20 different series - which one do you want? Make an educated guess and repeat each time you're wrong!
 
