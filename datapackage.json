@@ -1,40 +1,119 @@
 {
   "name": "cpi-uk",
   "title": "UK Consumer Price Index",
-  "sources": [{
-    "name": "Office of National Statistics",
-    "web": "https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23"
-  }],
-  "files": [
+  "sources": [
     {
+      "name": "Office of National Statistics",
+      "path": "https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/cdko/mm23",
+      "title": "Office of National Statistics"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "ODC-PDDL-1.0",
+      "path": "http://opendatacommons.org/licenses/pddl/",
+      "title": "Open Data Commons Public Domain Dedication and License v1.0"
+    }
+  ],
+  "resources": [
+    {
+      "name": "cpi-uk-annual",
       "path": "data/cpi-uk-annual.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
       "schema": {
         "fields": [
           {
-            "id": "Year"
+            "name": "Year",
+            "type": "year"
           },
           {
-            "id": "Price Index"
+            "name": "Price Index",
+            "type": "number"
           }
         ]
       }
     },
     {
+      "name": "cpi-uk-monthly",
+      "path": "data/cpi-uk-monthly.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date",
+            "format": "any"
+          },
+          {
+            "name": "Price Index",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "inflation-uk",
       "path": "data/inflation-uk.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
       "title": "Annual percentage change of long term indicator of prices of consumer g&s",
       "ons_id": "CDSI",
       "index_period": "1974Jan",
       "schema": {
-          "fields": [
-            {
-              "id": "Year"
-            },
-            { 
-              "id": "CDSI",
-              "label": "Inflation"
-            }
-          ]
-        }
+        "fields": [
+          {
+            "name": "Year",
+            "type": "year"
+          },
+          {
+            "name": "Inflation",
+            "type": "number"
+          }
+        ]
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "graph",
+      "title": "UK Consumer Price Index (Monthly)",
+      "resourceName": "cpi-uk-monthly",
+      "specType": "simple",
+      "spec": {
+        "type": "line",
+        "group": "Date",
+        "series": [
+          "Price Index"
+        ]
+      }
+    },
+    {
+      "name": "graph",
+      "title": "UK Consumer Price Index (Annual)",
+      "resourceName": "cpi-uk-annual",
+      "specType": "simple",
+      "spec": {
+        "type": "line",
+        "group": "Year",
+        "series": [
+          "Price Index"
+        ]
+      }
+    },
+    {
+      "name": "graph",
+      "title": "UK Inflation (Annual)",
+      "resourceName": "inflation-uk",
+      "specType": "simple",
+      "spec": {
+        "type": "column",
+        "group": "Year",
+        "series": [
+          "Inflation"
+        ]
+      }
     }
   ]
 }
